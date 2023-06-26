@@ -9,18 +9,37 @@ namespace DND_UpdatedAddressBookApplication
     internal class AddressBook
     {
         List<Contact> ContactList = new List<Contact>();
+        ValidationMethods validationMethods = new ValidationMethods();
         public void AddContact()
         {
             Console.WriteLine("Enter the details to add a contact: ");
 
             Console.Write("\nEnter name: ");
             string name = Console.ReadLine();
+            if (!validationMethods.ValidateName(name))
+            {
+                Console.WriteLine("INVALID NAME!!! Enter the valid data...\n");
+                AddContact();
+                return;
+            }
 
             Console.Write("Enter email: ");
             string email = Console.ReadLine();
+            if (!validationMethods.ValidateEmail(email))
+            {
+                Console.WriteLine("INVALID EMAIL!!! Enter the valid data...\n");
+                AddContact();
+                return;
+            }
 
-            Console.Write("Enter phone: ");
+            Console.Write("Enter phone number: ");
             string phone = Console.ReadLine();
+            if (!validationMethods.ValidatePhoneNumber(phone))
+            {
+                Console.WriteLine("INVALID PHONE NUMBER!!! Enter the valid data...\n");
+                AddContact();
+                return;
+            }
 
             Console.Write("Enter state: ");
             string state = Console.ReadLine();
@@ -30,6 +49,12 @@ namespace DND_UpdatedAddressBookApplication
 
             Console.Write("Enter zip: ");
             string zip = Console.ReadLine();
+            if (!validationMethods.ValidateZIP(zip))
+            {
+                Console.WriteLine("INVALID ZIP CODE!!! Enter the valid data...\n");
+                AddContact();
+                return;
+            }
 
             Contact contact = new Contact(name, email, phone, state, city, zip);
             ContactList.Add(contact);
