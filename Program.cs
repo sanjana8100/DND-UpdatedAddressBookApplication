@@ -22,27 +22,62 @@
                 {
                     case 1:
                         {
-                            addressBook.AddContact();
+                            try
+                            {
+                                addressBook.AddContact();
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e.Message);
+                            }
                             break;
                         }
                     case 2:
                         {
-                            addressBook.EditContact();
+                            try
+                            {
+                                addressBook.EditContact();
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e.Message);
+                            }
                             break;
                         }
                     case 3:
                         {
-                            addressBook.DeleteContact();
+                            try
+                            {
+                                addressBook.DeleteContact();
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e.Message);
+                            }
                             break;
                         }
                     case 4:
                         {
-                            addressBook.DisplayContact();
+                            try
+                            {
+                                addressBook.DisplayContact();
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e.Message);
+                            }
                             break;
                         }
                     case 5:
                         {
-                            addressBook.Display();
+                            try
+                            {
+                                addressBook.Display();
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e.Message);
+                            }
                             break;
                         }
                     case 6:

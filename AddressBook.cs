@@ -57,8 +57,22 @@ namespace DND_UpdatedAddressBookApplication
             }
 
             Contact contact = new Contact(name, email, phone, state, city, zip);
-            ContactList.Add(contact);
-            Console.WriteLine("Contact Added..");
+
+            bool duplicateContactFound = false;
+            foreach (Contact c in ContactList)
+            {
+                if (c.phone == phone || c.name == name)
+                {
+                    duplicateContactFound = true;
+                    throw new DuplicateContactException("DUPLICATE CONTACT FOUND!!! Please add contact with different attributes.");
+                }
+            }
+
+            if (!duplicateContactFound)
+            {
+                ContactList.Add(contact);
+                Console.WriteLine("Contact Added...");
+            }
         }
 
         public void EditContact()
@@ -122,7 +136,9 @@ namespace DND_UpdatedAddressBookApplication
                 }
             }
             if (!contactFound)
-                Console.WriteLine("Contact with given name NOT FOUND!!!");
+            {
+                throw new Exception("CONTACT NOT FOUND!!! Please enter the name of an existing contact.");
+            }
         }
 
         public void DeleteContact()
@@ -158,7 +174,9 @@ namespace DND_UpdatedAddressBookApplication
                 }
             }
             if (!contactFound)
-                Console.WriteLine("Contact with given name NOT FOUND!!!");
+            {
+                throw new Exception("CONTACT NOT FOUND!!! Please enter the name of an existing contact.");
+            }
         }
 
         public void DisplayContact()
@@ -178,7 +196,9 @@ namespace DND_UpdatedAddressBookApplication
                 }
             }
             if (!contactFound)
-                Console.WriteLine("Contact with given name NOT FOUND!!!");
+            {
+                throw new Exception("CONTACT NOT FOUND!!! Please enter the name of an existing contact.");
+            }
         }
 
         public void Display()
